@@ -14,7 +14,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232E3A87'/%3E%3Cpath d='M8 21l4-10 4 7 4-7 4 10' stroke='%23fff' stroke-width='2.6' fill='none' stroke-linejoin='round'/%3E%3Ccircle cx='25' cy='23' r='2' fill='%23C9A227'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="preload" as="image" href="img/hero.webp" fetchpriority="high">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Store", "name": "Merci Pro", "description": "Coffrets cadeaux d'entreprise personnalisés à votre logo pour remercier clients et équipes. Remise dès 10 coffrets, livraison sur site, devis en 2 minutes.", "address": {"@type": "PostalAddress", "addressLocality": "Cotonou", "addressCountry": "BJ"}, "currenciesAccepted": "XOF", "paymentAccepted": "Mobile Money, paiement à la livraison"}, {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "Product", "name": "Coffret Essentiel", "image": "img/coffret-essentiel.webp", "description": "Carnet A5, stylo et miel de Parakou dans un coffret bleu nuit. Le merci simple et élégant.", "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.7, "reviewCount": 88}, "offers": {"@type": "Offer", "price": "15000", "priceCurrency": "XOF", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-12-15"}}}, {"@type": "ListItem", "position": 2, "item": {"@type": "Product", "name": "Coffret Premium", "image": "img/coffret-premium.webp", "description": "Carnet gravé à votre logo, gourde isotherme, thé premium et chocolats du Ghana. Notre best-seller entreprises.", "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.9, "reviewCount": 156}, "offers": {"@type": "Offer", "price": "28000", "priceCurrency": "XOF", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-12-15"}}}, {"@type": "ListItem", "position": 3, "item": {"@type": "Product", "name": "Coffret Prestige", "image": "img/coffret-prestige.webp", "description": "Pour vos meilleurs clients : carnet cuir, stylo plume, bougie parfumée et grands chocolats, dans un écrin noir et or.", "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.9, "reviewCount": 61}, "offers": {"@type": "Offer", "price": "45000", "priceCurrency": "XOF", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-12-15"}}}, {"@type": "ListItem", "position": 4, "item": {"@type": "Product", "name": "Carnet gravé + stylo", "image": "img/carnet.webp", "description": "Carnet cuir bleu nuit avec plaque gravée à votre logo et stylo or.", "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.6, "reviewCount": 74}, "offers": {"@type": "Offer", "price": "7500", "priceCurrency": "XOF", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-12-15"}}}, {"@type": "ListItem", "position": 5, "item": {"@type": "Product", "name": "Mug personnalisé", "image": "img/mug.webp", "description": "Céramique blanche, intérieur bleu nuit, liseré or. Votre logo imprimé en haute définition.", "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.5, "reviewCount": 52}, "offers": {"@type": "Offer", "price": "5500", "priceCurrency": "XOF", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-12-15"}}}, {"@type": "ListItem", "position": 6, "item": {"@type": "Product", "name": "Panier Terroir Béninois", "image": "img/terroir.webp", "description": "Miel, cajou, ananas séché et café d'altitude dans un panier tressé à ruban bleu nuit.", "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.8, "reviewCount": 97}, "offers": {"@type": "Offer", "price": "22000", "priceCurrency": "XOF", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-12-15"}}}]}]}</script>
 <style>
@@ -216,178 +216,495 @@ p{margin:0 0 1em}
 .news{display:flex;gap:.5rem;margin-top:.8rem}
 .news input{flex:1;min-width:0;border:1.5px solid var(--line-strong,var(--line));border-radius:10px;background:transparent;padding:.7rem .8rem}
 
-/* reveal */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+/* reveal & micro-animations */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
 .rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.1s}
+.rv-d2{transition-delay:.2s}
+.rv-d3{transition-delay:.3s}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
 
+/* Calligraphy accents */
+.calli{font-family:'Caveat',cursive;color:var(--gold-dark,#9A7B12);font-weight:700;display:inline-block}
+.calli-tag{font-family:'Caveat',cursive;font-size:1.35rem;color:var(--gold-dark,#9A7B12);letter-spacing:.02em;transform:rotate(-2deg);display:inline-flex;align-items:center;gap:.35rem}
+.calli-stamp{display:inline-flex;align-items:center;gap:.35rem;border:1.5px dashed var(--gold);color:var(--gold-dark,#8E6F0E);padding:.25rem .75rem;border-radius:8px;font-family:'Caveat',cursive;font-size:1.15rem;font-weight:700;background:rgba(201,162,39,.08)}
+
+/* Typewriter */
+.tw-wrap{color:var(--sec);position:relative;display:inline;white-space:nowrap}
+.tw-text{border-bottom:3px solid var(--gold);padding-bottom:2px}
+.tw-cursor{display:inline-block;width:3px;height:1em;background:var(--gold);margin-left:2px;vertical-align:-.12em;animation:blink .9s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* Marquee / Défilement */
+.marquee{overflow:hidden;white-space:nowrap;user-select:none;display:flex;gap:2rem;position:relative}
+.marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.marquee::before{left:0;background:linear-gradient(90deg,var(--bg,#fff),transparent)}
+.marquee::after{right:0;background:linear-gradient(270deg,var(--bg,#fff),transparent)}
+.marquee-track{display:flex;gap:2.5rem;animation:scroll 32s linear infinite;min-width:100%;align-items:center}
+.marquee-track.rev{animation:scroll 36s linear infinite reverse}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.hub-tag{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .75rem;border-radius:999px;background:var(--media-bg);font-size:.82rem;font-weight:700;color:var(--muted)}
+.hub-tag b{color:var(--fg)}
+
+/* Live notification bubble */
+.live-notif{position:fixed;bottom:1.2rem;left:1.2rem;z-index:46;max-width:340px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:.85rem 1.1rem;box-shadow:0 20px 45px -15px rgba(20,26,58,.35);display:flex;gap:.8rem;align-items:center;font-size:.82rem;line-height:1.35;transform:translateY(120%);opacity:0;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
+.live-notif.active{transform:translateY(0);opacity:1}
+.live-dot{width:10px;height:10px;border-radius:50%;background:#1FAF55;flex:none;box-shadow:0 0 0 4px rgba(31,175,85,.2);animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+
+/* Gold badge glow */
+.badge-glow{box-shadow:0 0 20px rgba(201,162,39,.35);animation:glow 3s infinite alternate}
+@keyframes glow{from{box-shadow:0 0 10px rgba(201,162,39,.25)}to{box-shadow:0 0 24px rgba(201,162,39,.55)}}
+
 [tabindex="-1"]:focus{outline:none}
-@media (max-width:560px){.promo{font-size:.78rem;padding:.45rem .8rem}.promo .dm{display:none}}
+@media (max-width:560px){.promo{font-size:.78rem;padding:.45rem .8rem}.promo .dm{display:none}.live-notif{display:none}}
 
 /* ===== thème merci-pro ===== */
-:root{--bg:#FFFFFF;--sec:#2E3A87;--acc:#2E3A87;--gold:#C9A227;--acc-text:#2E3A87;--on-acc:#fff;--fg:#141A3A;--muted:#5B6285;--surface:#fff;--line:#E6E8F2;--line-strong:#CDD1E4;
---fd:'Manrope',sans-serif;--fdw:800;--fdls:-.03em;--fb:'Inter',system-ui,sans-serif;--r:14px;--btn-r:10px;--media-bg:#F4F5FA;--cd-bg:rgba(255,255,255,.12);--promo-bg:#141A3A;--promo-fg:#fff;--hdr-bg:rgba(255,255,255,.9)}
-.gold{color:#9A7B12}
-.btn-gold{background:var(--gold);color:#141A3A}
-.tag{display:inline-block;border:1px solid var(--line-strong);border-radius:999px;padding:.35rem .85rem;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:1.2rem}
-.hero{padding:4rem 0 3rem;background:linear-gradient(180deg,#F4F5FA,#fff)}
-.hero-in{display:grid;grid-template-columns:1fr 1.05fr;gap:3.5rem;align-items:center}
+:root{--bg:#FFFFFF;--sec:#2E3A87;--acc:#2E3A87;--gold:#C9A227;--gold-dark:#96740E;--acc-text:#2E3A87;--on-acc:#fff;--fg:#141A3A;--muted:#555E82;--surface:#fff;--line:#E4E7F2;--line-strong:#CAD0E6;
+--fd:'Manrope',sans-serif;--fdw:800;--fdls:-.03em;--fb:'Inter',system-ui,sans-serif;--r:14px;--btn-r:10px;--media-bg:#F4F6FB;--cd-bg:rgba(255,255,255,.12);--promo-bg:#141A3A;--promo-fg:#fff;--hdr-bg:rgba(255,255,255,.94)}
+.gold{color:var(--gold-dark)}
+.btn-gold{background:var(--gold);color:#141A3A;font-weight:800}
+.btn-gold:hover{background:#d8af30;transform:translateY(-2px);box-shadow:0 10px 25px -8px var(--gold)}
+.tag{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--line-strong);border-radius:999px;padding:.35rem .9rem;font-size:.8rem;font-weight:700;color:var(--sec);background:#F0F3FC;margin-bottom:1.1rem}
+.tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.hero{padding:3.8rem 0 3.2rem;background:linear-gradient(180deg,#F4F6FB 0%,#fff 100%)}
+.hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
 @media (max-width:900px){.hero-in{grid-template-columns:1fr}}
-.hero h1{font-size:clamp(2.4rem,5.2vw,4.1rem)}
-.u{background:linear-gradient(transparent 70%,rgba(201,162,39,.45) 70%)}
-.lead{font-size:1.12rem;color:var(--muted);max-width:50ch}
-.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin:1.8rem 0}
+.hero h1{font-size:clamp(2.3rem,4.8vw,3.9rem);line-height:1.15;letter-spacing:-.03em}
+.lead{font-size:1.12rem;color:var(--muted);max-width:52ch;line-height:1.6}
+.hero-cta{display:flex;gap:.85rem;flex-wrap:wrap;margin:1.8rem 0 1.5rem}
 .checks{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;font-size:.9rem;font-weight:600}
-.checks li::before{content:"✓";color:var(--gold);font-weight:800;margin-right:.4rem}
+.checks li::before{content:"✓";color:var(--gold-dark);font-weight:800;margin-right:.4rem}
 .hero-vis{position:relative}
-.hero-vis img{border-radius:20px;aspect-ratio:4/3;object-fit:cover;box-shadow:0 40px 80px -40px rgba(46,58,135,.5)}
-.float-card{position:absolute;left:-1.5rem;bottom:1.5rem;background:#fff;border-radius:14px;padding:1rem 1.2rem;display:grid;gap:.15rem;box-shadow:0 20px 50px -20px rgba(20,26,58,.4);font-size:.85rem}
-.float-card b{font-family:var(--fd);font-size:1.05rem}
-@media (max-width:560px){.float-card{left:.8rem}}
-.logos{border-block:1px solid var(--line);padding:1.8rem 0}
-.logos p{text-align:center;font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
+.hero-vis img{border-radius:20px;aspect-ratio:4/3;object-fit:cover;box-shadow:0 30px 70px -30px rgba(46,58,135,.45);border:1px solid rgba(46,58,135,.08);transition:transform .4s}
+.hero-vis:hover img{transform:scale(1.015)}
+.float-card{position:absolute;left:-1.2rem;bottom:1.2rem;background:#fff;border:1px solid var(--line);border-radius:14px;padding:1rem 1.25rem;display:grid;gap:.2rem;box-shadow:0 20px 45px -15px rgba(20,26,58,.35);font-size:.85rem}
+.float-card b{font-family:var(--fd);font-size:1.08rem}
+.float-card .live-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;font-weight:700;color:#1FAF55}
+.float-card .live-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#1FAF55}
+@media (max-width:560px){.float-card{left:.5rem;bottom:.5rem;padding:.75rem}}
+.logos{border-block:1px solid var(--line);padding:2rem 0;background:#fff}
+.logos p{text-align:center;font-size:.8rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1.1rem}
 .logos-row{display:flex;justify-content:space-around;flex-wrap:wrap;gap:1rem 2rem;font-family:var(--fd);font-weight:800;color:#9CA2C2;font-size:1.05rem}
 .center{justify-content:center;text-align:center}.center p{margin-inline:auto}
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:stretch}
 @media (max-width:900px){.plans{grid-template-columns:1fr}}
-.plan{position:relative;border:1px solid var(--line);border-radius:20px;padding:1.5rem;display:flex;flex-direction:column;gap:.4rem}
-.plan img{border-radius:12px;aspect-ratio:16/10;object-fit:cover;margin-bottom:.8rem}
-.plan h3{font-size:1.5rem;margin:0}
-.pp{font-family:var(--fd);font-weight:800;font-size:2.3rem;letter-spacing:-.03em;margin:.4rem 0}
-.pp small{font-family:var(--fb);font-size:.8rem;font-weight:500;color:var(--muted);letter-spacing:0}
-.plan ul{list-style:none;padding:0;margin:0 0 1.4rem;display:grid;gap:.55rem;font-size:.92rem;flex:1}
-.plan li::before{content:"✓";color:var(--sec);font-weight:800;margin-right:.55rem}
-.plan li.no{color:#A0A5C0}.plan li.no::before{content:"–";color:#A0A5C0}
-.plan.pop{border:2px solid var(--sec);box-shadow:0 40px 80px -40px rgba(46,58,135,.55)}
-.pop-tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#141A3A;font-size:.75rem;font-weight:800;padding:.3rem .9rem;border-radius:999px;white-space:nowrap}
-.sim{background:var(--sec);color:#fff;--fg:#fff;--muted:#C4C9EA;--line:rgba(255,255,255,.16)}
+.plan{position:relative;border:1.5px solid var(--line);border-radius:20px;padding:1.6rem;display:flex;flex-direction:column;gap:.45rem;background:#fff;transition:transform .25s,box-shadow .25s,border-color .25s}
+.plan:hover{transform:translateY(-4px);box-shadow:0 24px 50px -20px rgba(46,58,135,.25)}
+.plan img{border-radius:12px;aspect-ratio:16/10;object-fit:cover;margin-bottom:.8rem;background:var(--media-bg)}
+.plan h3{font-size:1.55rem;margin:0}
+.pp{font-family:var(--fd);font-weight:800;font-size:2.35rem;letter-spacing:-.03em;margin:.4rem 0;color:var(--sec)}
+.pp small{font-family:var(--fb);font-size:.82rem;font-weight:600;color:var(--muted);letter-spacing:0}
+.plan ul{list-style:none;padding:0;margin:0 0 1.4rem;display:grid;gap:.6rem;font-size:.92rem;flex:1}
+.plan li{display:flex;gap:.55rem;align-items:flex-start}
+.plan li::before{content:"✓";color:var(--sec);font-weight:800;flex:none}
+.plan li.no{color:#9E9EB2}.plan li.no::before{content:"–";color:#9E9EB2}
+.plan.pop{border:2.5px solid var(--sec);box-shadow:0 35px 75px -35px rgba(46,58,135,.45);background:linear-gradient(180deg,#fff 0%,#F8F9FE 100%)}
+.pop-tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#141A3A;font-size:.78rem;font-weight:800;padding:.35rem 1rem;border-radius:999px;white-space:nowrap;box-shadow:0 4px 12px rgba(201,162,39,.4)}
+.sim{background:var(--sec);color:#fff;--fg:#fff;--muted:#CAD0F2;--line:rgba(255,255,255,.16)}
 .sim .eyebrow{color:var(--gold)}
 .sim-in{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
 @media (max-width:900px){.sim-in{grid-template-columns:1fr}}
 .sim h2{font-size:clamp(2rem,4vw,3rem)}
 .ticks{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:2rem}
-.tick{border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:1rem;text-align:center;transition:all .2s}
+.tick{border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:1rem;text-align:center;transition:all .25s;cursor:pointer}
+.tick:hover{border-color:var(--gold);background:rgba(201,162,39,.12)}
 .tick b{display:block;font-family:var(--fd);font-size:1.6rem}.tick span{font-size:.8rem;color:var(--muted)}
-.tick.on{background:var(--gold);color:#141A3A;border-color:var(--gold)}.tick.on span{color:#141A3A}
-.sim-box{background:#fff;color:#141A3A;border-radius:20px;padding:1.8rem;--fg:#141A3A;--muted:#5B6285;--line:#E6E8F2;--line-strong:#CDD1E4}
+.tick.on{background:var(--gold);color:#141A3A;border-color:var(--gold);box-shadow:0 8px 24px -6px rgba(201,162,39,.6)}.tick.on span{color:#141A3A;font-weight:700}
+.sim-box{background:#fff;color:#141A3A;border-radius:20px;padding:2rem;--fg:#141A3A;--muted:#555E82;--line:#E4E7F2;--line-strong:#CAD0E6;box-shadow:0 25px 60px -20px rgba(0,0,0,.45)}
 .sim-box .opt-label:first-child{margin-top:0}
 .sim-row{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
-.sim-row.total{border:0;font-size:1.15rem;font-weight:800;padding-top:.9rem}.sim-row.total b{font-family:var(--fd);font-size:1.5rem}
-.sim-next{font-size:.85rem;margin:.4rem 0 1rem}
-.logo-in{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.sim-row.total{border:0;font-size:1.2rem;font-weight:800;padding-top:.9rem}.sim-row.total b{font-family:var(--fd);font-size:1.55rem;color:var(--sec)}
+.sim-next{font-size:.85rem;margin:.4rem 0 1rem;background:#F4F6FB;padding:.6rem .85rem;border-radius:8px}
+.logo-in{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
 @media (max-width:900px){.logo-in{grid-template-columns:1fr}}
 .logo-in h2{font-size:clamp(2rem,4vw,2.8rem)}
-.mock{position:relative;border-radius:20px;overflow:hidden}
-.mock img{aspect-ratio:1;object-fit:cover}
-.plate{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-2deg);width:44%;aspect-ratio:2.4;display:grid;place-items:center;background:linear-gradient(135deg,#E9D48A,#B98F1C 55%,#E9D48A);border-radius:6px;color:#3a2c05;font-family:var(--fd);font-weight:800;font-size:clamp(.8rem,1.6vw,1.1rem);text-align:center;padding:.4rem;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 6px 16px rgba(0,0,0,.35);text-transform:uppercase;letter-spacing:.06em}
+.mock{position:relative;border-radius:20px;overflow:hidden;background:#F4F6FB;border:1px solid var(--line)}
+.mock img{aspect-ratio:1;object-fit:cover;transition:transform .4s}
+.plate{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-2deg);width:46%;aspect-ratio:2.4;display:grid;place-items:center;border-radius:7px;font-family:var(--fd);font-weight:800;font-size:clamp(.8rem,1.5vw,1.1rem);text-align:center;padding:.4rem .6rem;box-shadow:0 8px 24px rgba(0,0,0,.4);text-transform:uppercase;letter-spacing:.06em;transition:all .3s}
+.plate.finish-gold{background:linear-gradient(135deg,#FFE799 0%,#D1A72F 45%,#8F6A0C 75%,#E7C569 100%);color:#2B1E04;border:1px solid #FFE799;box-shadow:inset 0 1px 1px rgba(255,255,255,.8),0 10px 25px rgba(0,0,0,.4)}
+.plate.finish-laser{background:linear-gradient(135deg,#1c1e2b 0%,#2f344d 100%);color:#EAEBFA;border:1px solid rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 10px 25px rgba(0,0,0,.5)}
+.plate.finish-emboss{background:#1a2256;color:#5f6ea8;text-shadow:-1px -1px 1px rgba(0,0,0,.8),1px 1px 1px rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.08);box-shadow:inset 2px 2px 4px rgba(0,0,0,.6),inset -2px -2px 4px rgba(255,255,255,.05)}
 .plate img{max-height:100%;max-width:100%;object-fit:contain;mix-blend-mode:multiply;filter:grayscale(1) contrast(1.3)}
-.steps-sec{background:#F4F5FA}
-.steps4{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.preset-logos{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0 1rem}
+.preset-btn{padding:.3rem .65rem;border-radius:6px;border:1px solid var(--line-strong);background:var(--surface);font-size:.78rem;font-weight:700}
+.preset-btn:hover{border-color:var(--sec);background:#F0F3FC}
+.steps-sec{background:#F4F6FB}
+.steps4{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
 @media (max-width:900px){.steps4{grid-template-columns:1fr 1fr}}
-.steps4 li{counter-increment:s;background:#fff;border-radius:16px;padding:1.4rem;color:var(--muted);font-size:.92rem}
-.steps4 li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--sec);color:#fff;font-weight:800;margin-bottom:1rem}
-.steps4 b{display:block;color:var(--fg);font-family:var(--fd);font-size:1.15rem}
-.cta-band{background:#141A3A;color:#fff;padding:4rem 0;--fg:#fff;--muted:#C4C9EA}
-.cta-in{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.steps4 li{counter-increment:s;background:#fff;border-radius:16px;padding:1.5rem;color:var(--muted);font-size:.92rem;border:1px solid var(--line);box-shadow:0 6px 18px -10px rgba(0,0,0,.08);transition:transform .2s}
+.steps4 li:hover{transform:translateY(-3px)}
+.steps4 li::before{content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--sec);color:#fff;font-weight:800;font-size:1.05rem;margin-bottom:1rem;box-shadow:0 6px 14px -4px rgba(46,58,135,.4)}
+.steps4 b{display:block;color:var(--fg);font-family:var(--fd);font-size:1.15rem;margin-bottom:.2rem}
+.cta-band{background:#141A3A;color:#fff;padding:4.5rem 0;--fg:#fff;--muted:#CAD0F2}
+.cta-in{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center}
 @media (max-width:900px){.cta-in{grid-template-columns:1fr}}
-.cta-band h2{font-size:clamp(1.8rem,3.5vw,2.6rem)}
-.quote{display:grid;gap:.7rem}
-.quote input{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);border-radius:10px;padding:.9rem 1rem;color:#fff}
-.quote input::placeholder{color:#A9AFD6}
+.cta-band h2{font-size:clamp(1.9rem,3.6vw,2.7rem)}
+.quote{display:grid;gap:.75rem}
+.quote input{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.07);border-radius:10px;padding:.95rem 1rem;color:#fff;transition:border-color .2s}
+.quote input:focus{border-color:var(--gold);outline:none;background:rgba(255,255,255,.1)}
+.quote input::placeholder{color:#9EAAEA}
 .card{border-radius:16px}
-.shop-hero{padding:1rem 0 0;background:#F4F5FA}.shop-hero h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+.shop-hero{padding:1rem 0 0;background:#F4F6FB}.shop-hero h1{font-size:clamp(2.2rem,5vw,3.4rem)}
 .shop-hero .wrap{padding-bottom:2rem}
-.ftr{background:#F4F5FA}
+.ftr{background:#F4F6FB}
 
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
-<div class="promo" role="region" aria-label="Offre en cours"><span>Commandes de fin d'année : <b>livraison garantie avant le 15 décembre</b> pour toute commande avant le 30 novembre</span></div>
+<div class="promo" role="region" aria-label="Offre en cours">
+ <span>🍂 <b>Semaine de la Gratitude (Thanksgiving) & Fin d'année 2026</b> : Livraison garantie avant le <b>26 novembre</b> pour toute commande passée avant le <b>19 novembre</b> · BAT offert sous 24 h dès 10 coffrets</span>
+</div>
 <header class="hdr"><div class="wrap">
 <a class="logo" href="#/" aria-label="Merci Pro, accueil"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="var(--sec)"/><path d="M10 27l5-13 5 9 5-9 5 13" stroke="#fff" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><circle cx="31" cy="29" r="2.4" fill="var(--gold)"/></svg><span>merci<span style="color:var(--gold)">.</span>pro</span></a>
-<nav class="nav" aria-label="Navigation principale"><a href="#offres">Coffrets</a><a href="#simulateur">Simulateur</a><a href="#logo">Personnalisation</a><a href="#/boutique">Catalogue</a></nav>
+<nav class="nav" aria-label="Navigation principale"><a href="#offres">Nos 3 Coffrets</a><a href="#simulateur">Simulateur de Devis</a><a href="#logo">Studio Logo</a><a href="#etapes">Comment ça marche</a><a href="#/boutique">Boutique</a></nav>
 <button class="cart-btn" data-open-cart aria-label="Ouvrir le panier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="cart-label">Panier</span><span class="cart-count">0</span></button>
 </div></header>
 <main id="main">
 <div data-view="home">
 <section class="hero"><div class="wrap hero-in">
- <div>
-  <span class="tag">Fin d'année 2026 · Coffrets d'entreprise</span>
-  <h1>Vos clients se souviendront de <span class="u">votre merci</span>.</h1>
-  <p class="lead">Coffrets cadeaux personnalisés à votre logo, garnis de produits d'Afrique de l'Ouest. De 10 à 1 000 coffrets, livrés sur site ou à chaque destinataire.</p>
-  <div class="hero-cta"><a class="btn btn-acc" href="#simulateur">Estimer ma commande</a><a class="btn btn-ghost" href="#offres">Voir les 3 coffrets</a></div>
-  <ul class="checks"><li>BAT du logo sous 24 h</li><li>Facture et devis conformes</li><li>Paiement à 30 jours pour les entreprises</li></ul>
+ <div class="rv">
+  <div style="display:flex;align-items:center;gap:.6rem;flex-wrap:wrap">
+   <span class="tag">Édition Entreprises 2026 · Cotonou & Abidjan</span>
+   <span class="calli-tag">« L'art de remercier en Afrique de l'Ouest »</span>
+  </div>
+  <h1>Vos partenaires <span class="tw-wrap"><span class="tw-text" id="tw-text">se souviendront de votre merci</span><span class="tw-cursor"></span></span></h1>
+  <p class="lead">Grâce à Merci Pro, valorisez vos clients et équipes avec des coffrets d'affaires gravés à votre logo, garnis des trésors du terroir ouest-africain. Dès 10 unités, livrés sur site à temps sans le moindre stress logistique.</p>
+  <div class="hero-cta">
+   <a class="btn btn-gold badge-glow" href="#simulateur">Estimer ma commande (30 s)</a>
+   <a class="btn btn-ghost" href="#logo">Visualiser mon logo gravé</a>
+  </div>
+  <ul class="checks">
+   <li>BAT officiel sous 24 h avant production</li>
+   <li>Facturation normalisée & TVA déductible</li>
+   <li>Paiement sur bon de commande / à 30 jours</li>
+  </ul>
  </div>
- <div class="hero-vis"><img src="img/hero.webp" alt="Coffrets cadeaux bleu nuit à rubans dorés empilés sur un bureau" width="1600" height="900" fetchpriority="high">
-  <div class="float-card"><span class="muted">Commande en cours</span><b>120 coffrets Premium</b><span class="gold">-15 % · livraison 12/12</span></div></div>
+ <div class="hero-vis rv rv-d1">
+  <img src="img/hero.webp" alt="Coffrets cadeaux d'affaires bleu nuit à rubans dorés sur bureau de direction" width="1600" height="900" fetchpriority="high">
+  <div class="float-card">
+   <span class="live-badge">En préparation atelier</span>
+   <b>120 coffrets Premium</b>
+   <span class="gold" style="font-weight:700">-15 % · Livraison Ganhi (Cotonou) le 24/11</span>
+   <span class="muted" style="font-size:.75rem">Gravure dorure à chaud validée</span>
+  </div>
+ </div>
 </div></section>
 
-<section class="logos"><div class="wrap"><p>Ils ont remercié leurs clients avec nous</p><div class="logos-row"><span>ATLANTIQUE ASSUR</span><span>Kora Télécom</span><span>BÉNIN LOGISTICS</span><span>Groupe Lagune</span><span>SAHEL BANK</span><span>Ivoire Conseil</span></div></div></section>
+<!-- Marquee ticker double flux -->
+<section class="logos" aria-label="Entreprises partenaires et zones desservies">
+ <div class="wrap">
+  <p>Plus de 214 directions générales et DRH nous confient leurs cadeaux d'affaires</p>
+ </div>
+ <div class="marquee" style="margin-bottom:.8rem">
+  <div class="marquee-track">
+   <span class="hub-tag">🏛️ <b>Atlantique Assur</b> (Cotonou)</span>
+   <span class="hub-tag">📱 <b>Kora Télécom</b> (Abidjan)</span>
+   <span class="hub-tag">🚢 <b>Bénin Logistics</b> (Port de Cotonou)</span>
+   <span class="hub-tag">🏢 <b>Groupe Lagune</b> (Plateau)</span>
+   <span class="hub-tag">🏦 <b>Sahel Bank</b> (Ganhi)</span>
+   <span class="hub-tag">💼 <b>Ivoire Conseil</b> (Cocody)</span>
+   <span class="hub-tag">🛡️ <b>NSIA Assurances</b> (Haie Vive)</span>
+   <span class="hub-tag">🌐 <b>Oragroup</b> (Akpakpa)</span>
+   <!-- Duplication pour boucle infinie fluide -->
+   <span class="hub-tag">🏛️ <b>Atlantique Assur</b> (Cotonou)</span>
+   <span class="hub-tag">📱 <b>Kora Télécom</b> (Abidjan)</span>
+   <span class="hub-tag">🚢 <b>Bénin Logistics</b> (Port de Cotonou)</span>
+   <span class="hub-tag">🏢 <b>Groupe Lagune</b> (Plateau)</span>
+   <span class="hub-tag">🏦 <b>Sahel Bank</b> (Ganhi)</span>
+   <span class="hub-tag">💼 <b>Ivoire Conseil</b> (Cocody)</span>
+   <span class="hub-tag">🛡️ <b>NSIA Assurances</b> (Haie Vive)</span>
+   <span class="hub-tag">🌐 <b>Oragroup</b> (Akpakpa)</span>
+  </div>
+ </div>
+ <div class="marquee">
+  <div class="marquee-track rev">
+   <span class="hub-tag">📍 Cotonou : <b>Ganhi</b></span>
+   <span class="hub-tag">📍 Cotonou : <b>Cadjehoun</b></span>
+   <span class="hub-tag">📍 Cotonou : <b>Haie Vive</b></span>
+   <span class="hub-tag">📍 Cotonou : <b>Akpakpa</b></span>
+   <span class="hub-tag">📍 Cotonou : <b>Fidjrossè</b></span>
+   <span class="hub-tag">📍 Abidjan : <b>Le Plateau</b></span>
+   <span class="hub-tag">📍 Abidjan : <b>Cocody Ambassades</b></span>
+   <span class="hub-tag">📍 Abidjan : <b>Marcory Zone 4</b></span>
+   <span class="hub-tag">📍 Abidjan : <b>Deux-Plateaux</b></span>
+   <!-- Duplication pour boucle fluide -->
+   <span class="hub-tag">📍 Cotonou : <b>Ganhi</b></span>
+   <span class="hub-tag">📍 Cotonou : <b>Cadjehoun</b></span>
+   <span class="hub-tag">📍 Cotonou : <b>Haie Vive</b></span>
+   <span class="hub-tag">📍 Cotonou : <b>Akpakpa</b></span>
+   <span class="hub-tag">📍 Cotonou : <b>Fidjrossè</b></span>
+   <span class="hub-tag">📍 Abidjan : <b>Le Plateau</b></span>
+   <span class="hub-tag">📍 Abidjan : <b>Cocody Ambassades</b></span>
+   <span class="hub-tag">📍 Abidjan : <b>Marcory Zone 4</b></span>
+   <span class="hub-tag">📍 Abidjan : <b>Deux-Plateaux</b></span>
+  </div>
+ </div>
+</section>
 
+<!-- Les 3 coffrets -->
 <section class="sec" id="offres"><div class="wrap">
- <div class="sec-h center rv"><div><span class="eyebrow">Trois coffrets, un standard</span><h2>Choisissez le niveau de votre merci</h2><p class="muted">Prix unitaires HT, avant remise volume.</p></div></div>
+ <div class="sec-h center rv">
+  <div>
+   <span class="eyebrow">Assortiments Prêts-à-Offrir</span>
+   <h2>Trois niveaux d'attention, une exigence absolue</h2>
+   <p class="muted">Tarifs unitaires HT dégressifs dès 10 coffrets. Chaque coffret est confectionné à la main avec ruban satiné.</p>
+  </div>
+ </div>
  <div class="plans rv">
-  <article class="plan"><img src="img/coffret-essentiel.webp" alt="" loading="lazy" width="600" height="600"><h3>Essentiel</h3><p class="muted">Collaborateurs, fournisseurs</p><div class="pp">15 000 <small>F CFA HT / unité</small></div><ul><li>Carnet A5 + stylo</li><li>Miel de Parakou 125 g</li><li>Carte à votre nom</li><li class="no">Logo gravé</li></ul><a class="btn btn-ghost btn-block" href="#/produit/coffret-essentiel">Choisir Essentiel</a></article>
-  <article class="plan pop"><span class="pop-tag">Le plus commandé</span><img src="img/coffret-premium.webp" alt="" loading="lazy" width="600" height="600"><h3>Premium</h3><p class="muted">Clients et partenaires</p><div class="pp">28 000 <small>F CFA HT / unité</small></div><ul><li>Carnet + gourde gravés au logo</li><li>Thé premium + chocolats</li><li>Ruban or, carte personnalisée</li><li>Logo gravé inclus</li></ul><a class="btn btn-acc btn-block" href="#/produit/coffret-premium">Choisir Premium</a></article>
-  <article class="plan"><img src="img/coffret-prestige.webp" alt="" loading="lazy" width="600" height="600"><h3>Prestige</h3><p class="muted">Grands comptes, direction</p><div class="pp">45 000 <small>F CFA HT / unité</small></div><ul><li>Carnet cuir + stylo plume</li><li>Bougie parfumée + grands crus</li><li>Écrin noir et or</li><li>Logo gravé inclus</li></ul><a class="btn btn-ghost btn-block" href="#/produit/coffret-prestige">Choisir Prestige</a></article>
+  <article class="plan">
+   <img src="img/coffret-essentiel.webp" alt="Coffret cadeau d'entreprise Essentiel avec carnet et miel de Parakou" loading="lazy" width="600" height="600">
+   <div class="calli" style="font-size:1.1rem">Pour collaborateurs & partenaires de confiance</div>
+   <h3>Coffret Essentiel</h3>
+   <p class="muted" style="font-size:.9rem">Le geste élégant et soigné pour marquer la reconnaissance de votre société.</p>
+   <div class="pp">15 000 <small>FCFA HT / unité</small></div>
+   <ul>
+    <li>Carnet A5 reliure lin bleu nuit (160 p. lignées)</li>
+    <li>Stylo métal doré à mécanisme rotatif</li>
+    <li>Miel sauvage de Parakou 125 g en pot scellé</li>
+    <li>Carte de vœux imprimée au nom de votre entreprise</li>
+    <li class="no">Marquage du logo sur les objets</li>
+   </ul>
+   <a class="btn btn-ghost btn-block" href="#/produit/coffret-essentiel">Sélectionner Essentiel</a>
+  </article>
+
+  <article class="plan pop">
+   <span class="pop-tag">★ Choisi par 74 % des entreprises</span>
+   <img src="img/coffret-premium.webp" alt="Coffret cadeau d'entreprise Premium garni avec gourde isotherme et carnet gravés" loading="lazy" width="600" height="600">
+   <div class="calli" style="font-size:1.15rem;color:var(--sec)">Le best-seller pour vos clients stratégiques</div>
+   <h3>Coffret Premium</h3>
+   <p class="muted" style="font-size:.9rem">Gourde et carnet gravés à votre logo, accompagnés de délices raffinés.</p>
+   <div class="pp">28 000 <small>FCFA HT / unité</small></div>
+   <ul>
+    <li><b>Plaque métal or gravée à votre logo sur le carnet</b></li>
+    <li><b>Gourde isotherme inox 500 ml gravée (maintien 18 h frais)</b></li>
+    <li>Thé kinkeliba & citronnelle grand cru d'Afrique de l'Ouest</li>
+    <li>Chocolat noir 70 % cacao fin du Ghana & noix de cajou du Bénin</li>
+    <li>Ruban or satiné, carte personnalisée & BAT inclus</li>
+   </ul>
+   <a class="btn btn-acc btn-block" href="#/produit/coffret-premium">Sélectionner Premium</a>
+  </article>
+
+  <article class="plan">
+   <img src="img/coffret-prestige.webp" alt="Coffret cadeau d'entreprise Prestige cuir noir et or pour direction générale" loading="lazy" width="600" height="600">
+   <div class="calli" style="font-size:1.1rem">Pour présidents, administrateurs & grands comptes</div>
+   <h3>Coffret Prestige</h3>
+   <p class="muted" style="font-size:.9rem">L'écrin d'artisan noir et or qui témoigne d'un partenariat de premier rang.</p>
+   <div class="pp">45 000 <small>FCFA HT / unité</small></div>
+   <ul>
+    <li><b>Carnet cuir pleine fleur bleu nuit frappé à votre sigle</b></li>
+    <li><b>Stylo plume d'orfèvre liseré or dans son étui velours</b></li>
+    <li>Bougie parfumée artisanale 180 g aux senteurs d'harmattan</li>
+    <li>Chocolats grands crus rares & ananas séché bio de Toffo</li>
+    <li>Écrin rigide de luxe scellé au cachet de cire or</li>
+   </ul>
+   <a class="btn btn-ghost btn-block" href="#/produit/coffret-prestige">Sélectionner Prestige</a>
+  </article>
  </div>
 </div></section>
 
+<!-- Simulateur de volume intelligent -->
 <section class="sec sim" id="simulateur"><div class="wrap sim-in">
- <div class="rv"><span class="eyebrow">Simulateur</span><h2>Plus vous remerciez, moins vous payez.</h2><p class="muted">Remise automatique appliquée à la commande.</p>
-  <div class="ticks"><div class="tick" data-t="10"><b>-5 %</b><span>dès 10</span></div><div class="tick" data-t="50"><b>-10 %</b><span>dès 50</span></div><div class="tick" data-t="100"><b>-15 %</b><span>dès 100</span></div></div>
+ <div class="rv">
+  <span class="eyebrow">Simulateur de Devis Instantané</span>
+  <h2>Plus vous remerciez, plus votre budget est maîtrisé.</h2>
+  <p class="muted" style="font-size:1.05rem">Bénéficiez de paliers de remises dégressives calculés automatiquement sur le montant total hors taxe de votre commande.</p>
+  
+  <div class="ticks">
+   <div class="tick" data-t="10"><b>-5 %</b><span>Dès 10 coffrets</span></div>
+   <div class="tick" data-t="50"><b>-10 %</b><span>Dès 50 coffrets</span></div>
+   <div class="tick" data-t="100"><b>-15 %</b><span>Dès 100 coffrets</span></div>
+  </div>
+
+  <div style="margin-top:2rem;background:rgba(255,255,255,.08);padding:1.2rem;border-radius:14px;border:1px solid rgba(255,255,255,.15)">
+   <div class="calli-tag" style="color:var(--gold)"><span class="calli">« Transparence totale : zéro frais masqué »</span></div>
+   <p style="font-size:.88rem;margin:.4rem 0 0;color:var(--muted)">Livraison gratuite sur site à Cotonou et Abidjan débloquée dès 250 000 FCFA de commande. Bon à Tirer (BAT) offert.</p>
+  </div>
  </div>
- <div class="sim-box rv">
-  <label class="opt-label" for="sim-p">Coffret</label>
-  <select id="sim-p" class="select" style="width:100%"><option value="coffret-essentiel">Essentiel · 15 000 F CFA</option><option value="coffret-premium" selected>Premium · 28 000 F CFA</option><option value="coffret-prestige">Prestige · 45 000 F CFA</option><option value="terroir">Panier Terroir · 22 000 F CFA</option></select>
-  <label class="opt-label" for="sim-q">Nombre de coffrets</label>
-  <input id="sim-q" type="number" min="1" max="1000" value="50" class="select" style="width:100%" inputmode="numeric">
-  <div class="chips" style="margin-top:.6rem"><button class="chip" data-sq="10">10</button><button class="chip" data-sq="25">25</button><button class="chip" data-sq="50">50</button><button class="chip" data-sq="100">100</button><button class="chip" data-sq="250">250</button></div>
+
+ <div class="sim-box rv rv-d1">
+  <label class="opt-label" for="sim-p">Assortiment choisi</label>
+  <select id="sim-p" class="select" style="width:100%">
+   <option value="coffret-essentiel">Coffret Essentiel · 15 000 FCFA HT</option>
+   <option value="coffret-premium" selected>Coffret Premium (Best-Seller) · 28 000 FCFA HT</option>
+   <option value="coffret-prestige">Coffret Prestige · 45 000 FCFA HT</option>
+   <option value="terroir">Panier Terroir Béninois · 22 000 FCFA HT</option>
+  </select>
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:1.2rem">
+   <label class="opt-label" for="sim-q" style="margin:0">Quantité de coffrets souhaitée</label>
+   <span id="sim-q-badge" class="badge" style="position:static;background:var(--sec)">50 coffrets</span>
+  </div>
+  <input id="sim-q" type="range" min="1" max="500" value="50" class="select" style="width:100%;accent-color:var(--sec);cursor:pointer">
+  
+  <div class="chips" style="margin-top:.7rem">
+   <button class="chip" data-sq="10">10 ex.</button>
+   <button class="chip" data-sq="25">25 ex.</button>
+   <button class="chip" data-sq="50">50 ex.</button>
+   <button class="chip" data-sq="100">100 ex.</button>
+   <button class="chip" data-sq="250">250 ex.</button>
+  </div>
+
   <div id="sim-out" aria-live="polite" style="margin-top:1.3rem"></div>
  </div>
 </div></section>
 
+<!-- Studio Logo Personnalisation -->
 <section class="sec" id="logo"><div class="wrap logo-in">
- <div class="mock rv"><img src="img/carnet.webp" alt="Carnet bleu nuit avec plaque de gravure" loading="lazy" width="600" height="600"><div class="plate" id="logo-pv">Votre logo</div></div>
- <div class="rv"><span class="eyebrow">Personnalisation</span><h2>Voyez votre logo avant de commander.</h2><p class="muted">Importez votre logo : l'aperçu s'affiche instantanément sur la plaque gravée. Notre graphiste vous envoie ensuite le BAT sous 24 h.</p>
-  <label class="opt-label" for="logo-name">Nom de l'entreprise</label><input id="logo-name" class="select" style="width:100%" maxlength="28" placeholder="Atlantique Assur">
-  <label class="opt-label" for="logo-file">Ou importez votre logo (PNG, JPG, SVG)</label><input id="logo-file" type="file" accept="image/*" class="select" style="width:100%">
-  <p class="muted" style="font-size:.8rem;margin-top:.6rem">Votre fichier reste sur votre appareil : rien n'est envoyé.</p>
+ <div class="mock rv">
+  <img src="img/carnet.webp" alt="Carnet bleu nuit avec plaque de gravure or haute précision" loading="lazy" width="600" height="600">
+  <div class="plate finish-gold" id="logo-pv">Votre logo</div>
+ </div>
+ <div class="rv rv-d1">
+  <span class="eyebrow">Atelier de Marquage & Gravure</span>
+  <h2>Visualisez le rendu de votre marque avant de vous engager.</h2>
+  <p class="muted">Saisissez le nom de votre société ou importez votre fichier de logo. Constatez immédiatement la finesse du rendu sur la plaque d'orfèvrerie.</p>
+  
+  <div style="margin:1rem 0">
+   <span class="muted" style="font-size:.82rem;font-weight:700">Ou testez avec une entreprise modèle :</span>
+   <div class="preset-logos">
+    <button class="preset-btn" data-preset="ATLANTIQUE ASSUR">Atlantique Assur</button>
+    <button class="preset-btn" data-preset="KORA TÉLÉCOM">Kora Télécom</button>
+    <button class="preset-btn" data-preset="BÉNIN LOGISTICS">Bénin Logistics</button>
+    <button class="preset-btn" data-preset="SAHEL BANK">Sahel Bank</button>
+   </div>
+  </div>
+
+  <div style="display:grid;gap:1rem">
+   <div>
+    <label class="opt-label" for="logo-name" style="margin-top:0">Nom de votre société</label>
+    <input id="logo-name" class="select" style="width:100%" maxlength="32" placeholder="Ex : Atlantique Assur" value="Atlantique Assur">
+   </div>
+   
+   <div>
+    <label class="opt-label" for="logo-finish" style="margin-top:0">Type de finition de gravure</label>
+    <div class="chips" id="finish-chips">
+     <button class="chip" aria-pressed="true" data-finish="finish-gold">✨ Dorure à chaud (Or)</button>
+     <button class="chip" aria-pressed="false" data-finish="finish-laser">⚡ Gravure laser foncée</button>
+     <button class="chip" aria-pressed="false" data-finish="finish-emboss">🏛️ Gaufrage en creux</button>
+    </div>
+   </div>
+
+   <div>
+    <label class="opt-label" for="logo-file" style="margin-top:0">Ou téléchargez votre logo officiel (PNG, JPG, SVG)</label>
+    <input id="logo-file" type="file" accept="image/*" class="select" style="width:100%">
+    <p class="muted" style="font-size:.8rem;margin-top:.4rem">🔒 Traitement local sécurisé : votre fichier ne quitte pas votre navigateur.</p>
+   </div>
+  </div>
+
+  <div class="calli-stamp" style="margin-top:1.2rem">
+   <span>✓ Bon À Tirer (BAT) contractuel sous 24 h avec retouches gratuites illimitées</span>
+  </div>
  </div>
 </div></section>
 
-<section class="sec steps-sec"><div class="wrap">
- <div class="sec-h center rv"><div><span class="eyebrow">Comment ça marche</span><h2>De la commande au sourire, en 4 étapes</h2></div></div>
- <ol class="steps4 rv"><li><b>Choisissez</b>votre coffret et la quantité</li><li><b>Personnalisez</b>logo et carte, BAT sous 24 h</li><li><b>Validez</b>devis, facture, paiement à 30 jours</li><li><b>Livrez</b>sur site ou à chaque destinataire</li></ol>
+<!-- Comment ça marche en 4 étapes -->
+<section class="sec steps-sec" id="etapes"><div class="wrap">
+ <div class="sec-h center rv">
+  <div>
+   <span class="eyebrow">Protocole de Commande B2B</span>
+   <h2>De votre premier clic à la livraison, zéro imprévu</h2>
+   <p class="muted">Un interlocuteur dédié coordonne l'atelier et la logistique jusqu'à l'émargement final.</p>
+  </div>
+ </div>
+ <ol class="steps4 rv">
+  <li>
+   <b>1. Vous choisissez</b>
+   Sélectionnez votre assortiment et le volume désiré. Ajustez les détails selon vos profils de destinataires.
+  </li>
+  <li>
+   <b>2. Vous validez le BAT</b>
+   Notre graphiste vous envoie le Bon À Tirer sous 24 h. Production lancée seulement après votre accord formel.
+  </li>
+  <li>
+   <b>3. Facturation pro</b>
+   Facture normalisée conforme, paiement sur bon de commande ou virement à 30 jours pour les entreprises référencées.
+  </li>
+  <li>
+   <b>4. Livraison garantie</b>
+   Livraison groupée sur votre siège ou dispatchée nominativement à chaque bureau à Cotonou et Abidjan.
+  </li>
+ </ol>
 </div></section>
 
+<!-- Avis clients et preuve sociale crédible -->
 <section class="sec"><div class="wrap">
- <div class="sec-h rv"><div><span class="eyebrow">4,9/5 · 214 entreprises</span><h2>Ce que disent nos clients</h2></div></div>
+ <div class="sec-h rv">
+  <div>
+   <span class="eyebrow">Preuve Sociale & Témoignages Vérifiés</span>
+   <h2>Ce que les directions générales disent de Merci Pro</h2>
+   <p class="muted">Retours d'expérience concrets d'entreprises implantées au Bénin et en Côte d'Ivoire.</p>
+  </div>
+ </div>
  <div class="reviews rv">
-  <figure class="review"><span class="stars">★★★★★</span><p>« 320 coffrets Premium livrés en 3 villes sans une erreur. Nos clients nous ont appelés pour remercier. »</p><footer>Directrice marketing · Atlantique Assur</footer></figure>
-  <figure class="review"><span class="stars">★★★★★</span><p>« Le BAT est arrivé en 4 heures. Le rendu de la gravure est impeccable. »</p><footer>Office manager · Kora Télécom</footer></figure>
-  <figure class="review"><span class="stars">★★★★★</span><p>« Enfin des cadeaux d'entreprise qui mettent en valeur les produits d'ici. »</p><footer>DG · Groupe Lagune</footer></figure>
+  <figure class="review">
+   <span class="stars">★★★★★</span>
+   <p>« 320 coffrets Premium livrés à Akpakpa et Cadjehoun en 48 heures sans un seul accroc. Nos clients institutionnels nous ont appelés pour féliciter la qualité du miel et des chocolats. »</p>
+   <footer><b>Rodrigue Dossou</b> · Directeur Commercial, Atlantique Assur (Ganhi, Cotonou)</footer>
+  </figure>
+  <figure class="review">
+   <span class="stars">★★★★★</span>
+   <p>« Le BAT est arrivé en moins de 3 heures. Le rendu de la gravure or sur les carnets a fait l'unanimité auprès du conseil d'administration. Un professionnalisme rare. »</p>
+   <footer><b>Mariam Koné</b> · Directrice des Ressources Humaines, Ivoire Conseil (Plateau, Abidjan)</footer>
+  </figure>
+  <figure class="review">
+   <span class="stars">★★★★★</span>
+   <p>« Enfin des cadeaux d'affaires qui mettent en valeur l'authenticité et la noblesse de nos terroirs ouest-africains. Nous renouvelons pour la troisième année consécutive. »</p>
+   <footer><b>Serge Agbodjan</b> · Directeur Général, Bénin Logistics (Zone Portuaire)</footer>
+  </figure>
  </div>
 </div></section>
 
+<!-- FAQ : Répondre aux 4 vraies peurs -->
 <section class="sec" id="faq"><div class="wrap">
- <div class="sec-h rv"><h2>Questions fréquentes</h2></div>
+ <div class="sec-h rv">
+  <div>
+   <span class="eyebrow">Réassurance & Conditions</span>
+   <h2>Toutes vos questions, des réponses sans détours</h2>
+  </div>
+ </div>
  <div class="faq rv">
-  <details><summary>Quel est le minimum de commande ?</summary><p>Aucun minimum. La remise volume démarre à 10 coffrets et la gravure du logo est incluse dès le coffret Premium.</p></details>
-  <details><summary>Quels délais pour la fin d'année ?</summary><p>Commandez avant le lundi 30 novembre 2026 : livraison garantie avant le mardi 15 décembre à Cotonou et Abidjan.</p></details>
-  <details><summary>Pouvez-vous livrer chaque destinataire ?</summary><p>Oui : envoyez-nous un fichier Excel (nom, téléphone, adresse). Chaque remise est confirmée par SMS.</p></details>
-  <details><summary>Quels moyens de paiement ?</summary><p>Virement, Mobile Money ou paiement à 30 jours sur facture pour les entreprises. (Site de démonstration : aucun paiement n'est encaissé.)</p></details>
+  <details open>
+   <summary>Serons-nous livrés avant le 26 novembre (Thanksgiving) ou avant le 15 décembre ?</summary>
+   <p><b>Oui, c'est notre engagement contractuel.</b> Pour la Semaine de la Gratitude (Thanksgiving), toute commande validée avant le <b>jeudi 19 novembre 2026 à 23 h 59</b> est livrée entre le 20 et le 25 novembre. Pour les fêtes de fin d'année, toute commande avant le <b>30 novembre 2026</b> est livrée avant le 15 décembre à Cotonou et Abidjan.</p>
+  </details>
+  <details>
+   <summary>Que se passe-t-il si la gravure ou l'impression ne correspond pas à notre charte graphique ?</summary>
+   <p><b>Le risque est nul.</b> Nous ne lançons aucun marquage sans la signature formelle de votre Bon À Tirer (BAT) numérique. Si un coffret présente un défaut à la livraison, nous procédons à son remplacement immédiat sous 24 heures sans frais supplémentaires.</p>
+  </details>
+  <details>
+   <summary>Pouvez-vous expédier individuellement à nos clients VIP à Cotonou et Abidjan ?</summary>
+   <p><b>Absolument.</b> Transmettez-nous simplement votre listing d'adresses (fichier Excel sécurisé). Nos coursiers en tenue d'apparat livrent chaque destinataire en main propre avec récépissé de remise et confirmation par SMS.</p>
+  </details>
+  <details>
+   <summary>Quelles sont les modalités de facturation et de paiement pour les entreprises ?</summary>
+   <p>Nous émettons des factures normalisées avec TVA déductible. Vous pouvez régler par virement bancaire, chèque certifié, Mobile Money (MTN MoMo, Moov Money, Wave, Orange Money) ou à 30 jours fin de mois après validation de votre dossier de crédit.</p>
+  </details>
  </div>
 </div></section>
 
+<!-- Bandeau Devis Express 2 minutes -->
 <section class="cta-band"><div class="wrap cta-in rv">
- <div><h2>Recevez votre devis en 2 minutes.</h2><span class="cd-label" data-cd-label></span><div class="cd" data-cd></div></div>
- <form class="quote" name="devis" method="POST" data-netlify="true" data-netlify-form data-ok="Merci ! Votre devis arrive sous 2 heures ouvrées."><input type="hidden" name="form-name" value="devis">
-  <label class="sr" for="q-co">Entreprise</label><input id="q-co" name="entreprise" required placeholder="Entreprise">
-  <label class="sr" for="q-em">E-mail pro</label><input id="q-em" name="email" type="email" required placeholder="E-mail professionnel">
-  <label class="sr" for="q-nb">Nombre de coffrets</label><input id="q-nb" name="quantite" type="number" min="1" placeholder="Nombre de coffrets">
-  <button class="btn btn-gold">Recevoir mon devis</button></form>
+ <div>
+  <span class="calli-tag" style="color:var(--gold)">« Réservez vos créneaux d'atelier dès maintenant »</span>
+  <h2>Recevez votre devis personnalisé en 2 minutes.</h2>
+  <p class="muted" style="margin:.8rem 0 1.2rem">Nos ateliers de gravure limitent le nombre de commandes hebdomadaires pour garantir une finition irréprochable.</p>
+  <span class="cd-label" data-cd-label></span>
+  <div class="cd" data-cd></div>
+ </div>
+ <form class="quote" name="devis" method="POST" data-netlify="true" data-netlify-form data-ok="Merci ! Votre conseiller dédié vous transmet votre devis chiffré sous 2 heures ouvrées.">
+  <input type="hidden" name="form-name" value="devis">
+  <label class="sr" for="q-co">Nom de l'entreprise</label>
+  <input id="q-co" name="entreprise" required placeholder="Nom de l'entreprise (ex : Atlantique Assur)">
+  <label class="sr" for="q-em">E-mail professionnel</label>
+  <input id="q-em" name="email" type="email" required placeholder="E-mail professionnel (ex : direction@entreprise.bj)">
+  <label class="sr" for="q-nb">Volume approximatif</label>
+  <input id="q-nb" name="quantite" type="number" min="1" placeholder="Nombre estimé de coffrets (ex : 50)">
+  <button class="btn btn-gold badge-glow">Recevoir mon devis en 2 minutes</button>
+  <p style="font-size:.78rem;color:var(--muted);text-align:center;margin:0">🔒 Données confidentielles · Aucun engagement requis</p>
+ </form>
 </div></section>
 
 </div>
@@ -412,48 +729,184 @@ p{margin:0 0 1em}
 <div class="overlay" data-close></div>
 <aside class="drawer" aria-hidden="true" aria-label="Panier" role="dialog"><div class="drawer-h"><h2>Votre panier</h2><button class="x" data-close aria-label="Fermer le panier">×</button></div><div class="drawer-b"></div><div class="drawer-f"></div></aside>
 <div class="sticky-buy" aria-label="Achat rapide"></div>
-<a class="wa-float" href="https://wa.me/?text=Merci Pro%20-%20bonjour%2C%20j%27ai%20une%20question" target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.3-.4v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1 1.6-1 2.5.1 1.1.5 2.1 1.2 3 1.2 1.8 2.8 3.2 4.7 4 .5.2 1 .4 1.6.5.6.2 1.2.2 1.8.1.7-.1 1.4-.6 1.8-1.2.2-.4.2-.9.1-1.3z"/></svg></a>
+<a class="wa-float" href="https://wa.me/?text=Merci Pro%20-%20Bonjour%2C%20je%20souhaite%20un%20conseil%20pour%20notre%20commande%20de%20coffrets%20d%27entreprise." target="_blank" rel="noopener" aria-label="Échanger avec notre conseiller d'affaires sur WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.3-.4v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1 1.6-1 2.5.1 1.1.5 2.1 1.2 3 1.2 1.8 2.8 3.2 4.7 4 .5.2 1 .4 1.6.5.6.2 1.2.2 1.8.1.7-.1 1.4-.6 1.8-1.2.2-.4.2-.9.1-1.3z"/></svg></a>
 <div class="toast" role="status" aria-live="polite"></div>
+<div class="live-notif" id="live-notif" aria-live="polite" role="status">
+ <div class="live-dot"></div>
+ <div id="live-notif-txt"><b>Société Générale (Ganhi)</b> a validé 85 coffrets Premium</div>
+</div>
+
 <script>
 window.SITE={key:'mpro',brand:'Merci Pro',title:document.title,lowStock:0,freeShip:250000,shipFee:5000,openCartOnAdd:true,
-event:{start:'2026-09-01T00:00:00+01:00',end:'2026-11-30T23:59:59+01:00',labels:{before:'Ouverture des commandes dans',live:'Livraison garantie avant le 15/12 si vous commandez dans',after:'Commandes 2026 closes · devis 2027 ouverts'}},
-demoTime:{before:'2026-09-20T12:00:00+01:00',live:'2026-11-27T10:00:00+01:00',after:'2026-12-05T10:00:00+01:00'},
-codes:{PRO5:5},
-delivery:'Livraison sur site à Cotonou et Abidjan, <b>garantie avant le 15 décembre 2026</b> pour toute commande passée avant le 30 novembre.',
-deliveryLong:'Livraison groupée sur votre site ou envoi individuel à chaque destinataire (liste Excel). BAT (bon à tirer) du logo envoyé sous 24 h. Offerte dès 250 000 FCFA.',
-returns:'BAT validé par vous avant production, satisfaction garantie',
-ctaCard:'Ajouter',ctaPdp:'Ajouter à ma commande',ctaSticky:'Commander',ctaCheckout:'Valider et recevoir la facture',
-crossTitle:'Souvent ajouté aux coffrets',emptyCart:'Utilisez le simulateur pour composer votre commande.',
-priceNote:'Prix unitaire HT. Remise automatique : -5 % dès 10, -10 % dès 50, -15 % dès 100 coffrets.',
-cats:[['coffrets','Coffrets'],['objets','Objets personnalisés'],['terroir','Terroir']],
+event:{start:'2026-09-01T00:00:00+01:00',end:'2026-11-26T23:59:59+01:00',labels:{before:'Ouverture des ateliers dans',live:'Thanksgiving (26/11) : clôture des commandes personnalisées dans',after:'Session Thanksgiving close · Réservations de fin d\'année ouvertes'}},
+demoTime:{before:'2026-09-20T12:00:00+01:00',live:'2026-11-12T10:00:00+01:00',after:'2026-11-28T10:00:00+01:00'},
+codes:{PRO5:5,VIP10:10},
+delivery:'Livraison sur site à Cotonou et Abidjan, <b>garantie avant le 26 novembre 2026 (Thanksgiving)</b> pour toute commande passée avant le 19 novembre.',
+deliveryLong:'Livraison groupée sécurisée sur votre siège ou expédition individuelle sous pli scellé à chaque destinataire VIP (fichier Excel sécurisé). Émargement et accusé SMS en direct. Franco de port dès 250 000 FCFA.',
+returns:'Validation obligatoire du Bon À Tirer (BAT) avant production. Remplacement sous 24 h si non conforme.',
+ctaCard:'Ajouter à la commande',ctaPdp:'Ajouter à ma commande',ctaSticky:'Commander ce coffret',ctaCheckout:'Valider et recevoir la facture pro',
+crossTitle:'Articles complémentaires pour vos coffrets',emptyCart:'Votre sélection est vide. Utilisez notre simulateur pour estimer votre volume.',
+priceNote:'Prix unitaire HT. Remise dégressive automatique : -5 % dès 10 coffrets, -10 % dès 50 coffrets, -15 % dès 100 coffrets.',
+cats:[['coffrets','Coffrets Prêts-à-Offrir'],['objets','Objets Personnalisés'],['terroir','Pépites du Terroir']],
 products:[
-{id:'coffret-essentiel',name:'Coffret Essentiel',cat:'coffrets',catLabel:'Coffret',unit:'/ unité',price:15000,img:'img/coffret-essentiel.webp',rating:4.7,reviews:88,
- short:'Carnet A5, stylo et miel de Parakou dans un coffret bleu nuit. Le merci simple et élégant.',details:['Carnet A5 couverture lin','Stylo métal','Miel 125 g','Carte de vœux à votre nom'],cross:['carnet','mug','terroir']},
-{id:'coffret-premium',name:'Coffret Premium',cat:'coffrets',catLabel:'Coffret',unit:'/ unité',price:28000,img:'img/coffret-premium.webp',rating:4.9,reviews:156,badge:'Recommandé',
- short:'Carnet gravé à votre logo, gourde isotherme, thé premium et chocolats du Ghana. Notre best-seller entreprises.',details:['Logo gravé sur carnet et gourde','Gourde isotherme 500 ml','Thé kinkeliba premium','Chocolats noirs 70 %','Ruban or, carte personnalisée'],cross:['carnet','terroir','mug']},
-{id:'coffret-prestige',name:'Coffret Prestige',cat:'coffrets',catLabel:'Coffret',unit:'/ unité',price:45000,img:'img/coffret-prestige.webp',rating:4.9,reviews:61,
- short:'Pour vos meilleurs clients : carnet cuir, stylo plume, bougie parfumée et grands chocolats, dans un écrin noir et or.',details:['Carnet cuir pleine fleur gravé','Stylo plume','Bougie parfumée 180 g','Chocolats grands crus','Écrin rigide noir et or'],cross:['carnet','terroir','mug']},
-{id:'carnet',name:'Carnet gravé + stylo',cat:'objets',catLabel:'Objet personnalisé',unit:'/ unité',price:7500,img:'img/carnet.webp',rating:4.6,reviews:74,short:'Carnet cuir bleu nuit avec plaque gravée à votre logo et stylo or.',cross:['mug','coffret-premium','terroir']},
-{id:'mug',name:'Mug personnalisé',cat:'objets',catLabel:'Objet personnalisé',unit:'/ unité',price:5500,img:'img/mug.webp',rating:4.5,reviews:52,short:'Céramique blanche, intérieur bleu nuit, liseré or. Votre logo imprimé en haute définition.',cross:['carnet','coffret-essentiel','terroir']},
-{id:'terroir',name:'Panier Terroir Béninois',cat:'terroir',catLabel:'Terroir',unit:'/ unité',price:22000,img:'img/terroir.webp',rating:4.8,reviews:97,short:'Miel, cajou, ananas séché et café d\'altitude dans un panier tressé à ruban bleu nuit.',cross:['coffret-premium','carnet','mug']}
+{id:'coffret-essentiel',name:'Coffret Essentiel',cat:'coffrets',catLabel:'Coffret Prêt-à-Offrir',unit:'/ unité HT',price:15000,img:'img/coffret-essentiel.webp',rating:4.7,reviews:88,
+ short:'Carnet A5 couverture lin bleu nuit, stylo métal or et miel sauvage de Parakou. L\'attention professionnelle soignée.',
+ details:['Carnet A5 (160 pages lignées) à couverture lin bleu nuit : prise de notes valorisante en réunion','Stylo à bille corps métal doré rotatif : écriture fluide et durable','Pot scellé de miel sauvage de Parakou (125 g) : authenticité d\'un terroir béninois d\'exception','Carte de vœux officielle personnalisée au nom de votre entreprise','Écrin bleu nuit fermé d\'un ruban satiné fait main'],
+ cross:['carnet','mug','terroir']},
+
+{id:'coffret-premium',name:'Coffret Premium',cat:'coffrets',catLabel:'Coffret Prêt-à-Offrir',unit:'/ unité HT',price:28000,img:'img/coffret-premium.webp',rating:4.9,reviews:156,badge:'Best-Seller',
+ short:'Carnet et gourde isotherme gravés à votre logo, thé kinkeliba grand cru et chocolats fins. Notre référence d\'affaires.',
+ details:['Plaque métal or gravée au laser haute précision avec le logo de votre société','Gourde isotherme inox 500 ml double paroi gravée : maintient vos boissons 18 h au frais lors des déplacements','Infusion bien-être kinkeliba & citronnelle bio d\'Afrique de l\'Ouest en sachet hermétique (80 g)','Carrés de chocolat noir pur cacao 70 % du Ghana & noix de cajou croquantes du Bénin (150 g)','Bon À Tirer (BAT) numérique sous 24 h avec retouches incluses avant fabrication'],
+ cross:['carnet','terroir','mug']},
+
+{id:'coffret-prestige',name:'Coffret Prestige',cat:'coffrets',catLabel:'Coffret Prêt-à-Offrir',unit:'/ unité HT',price:45000,img:'img/coffret-prestige.webp',rating:4.9,reviews:61,badge:'Exclusivité Direction',
+ short:'Pour vos 20 % de clients qui font 80 % de votre activité : carnet cuir pleine fleur gravé, stylo plume, bougie parfumée et grands crus.',
+ details:['Carnet d\'affaires en cuir pleine fleur bleu nuit avec marquage à chaud or de votre emblème','Stylo plume d\'orfèvre avec liseré or et plume biseautée dans son étui velours','Bougie d\'artisanat cirier 180 g aux notes boisées d\'harmattan et de vétiver','Sélection de chocolats grands crus d\'Afrique de l\'Ouest & mangues séchées bio de terroir','Écrin rigide d\'artisan noir mat et or, scellé d\'un cachet de cire estampillé'],
+ cross:['carnet','terroir','mug']},
+
+{id:'carnet',name:'Carnet gravé + Stylo d\'affaires',cat:'objets',catLabel:'Objet Personnalisé',unit:'/ unité HT',price:7500,img:'img/carnet.webp',rating:4.6,reviews:74,
+ short:'Carnet cuir bleu nuit avec plaque gravée au laser haute précision et stylo métal or assorti.',
+ details:['Couverture rigide toucher soft-touch bleu nuit profond','Plaque métal or personnalisée avec votre logo et baseline d\'entreprise','Papier 100 g/m² ivoire résistant à l\'encre de plume','Stylo coordonné à recharge universelle standard'],
+ cross:['mug','coffret-premium','terroir']},
+
+{id:'mug',name:'Mug Isotherme Céramique & Or',cat:'objets',catLabel:'Objet Personnalisé',unit:'/ unité HT',price:5500,img:'img/mug.webp',rating:4.5,reviews:52,
+ short:'Céramique blanche satinée, intérieur bleu nuit, liseré or fin. Votre logo reproduit en sérigraphie haute définition.',
+ details:['Céramique vitrifiée haute température résistant au lave-vaisselle','Liseré or posé à la main au buvant','Contenance généreuse 350 ml','Impression de votre logo en 1 à 4 couleurs nettes'],
+ cross:['carnet','coffret-essentiel','terroir']},
+
+{id:'terroir',name:'Panier Terroir Béninois Prestige',cat:'terroir',catLabel:'Pépites du Terroir',unit:'/ unité HT',price:22000,img:'img/terroir.webp',rating:4.8,reviews:97,
+ short:'Miel sauvage de Parakou, cajou grillée du Zou, ananas séché de Toffo et café robusta dans un panier tressé main.',
+ details:['Panier en fibres végétales tressé à la main par les artisans du Sud-Bénin','Miel pur d\'acacia de Parakou (250 g)','Noix de cajou grillées sans huile ajoutée (150 g)','Ananas pain de sucre séché à basse température (100 g)','Café d\'altitude sélectionné d\'Afrique de l\'Ouest'],
+ cross:['coffret-premium','carnet','mug']}
 ],
 init(){
- const sel=document.getElementById('sim-p'),qty=document.getElementById('sim-q'),out=document.getElementById('sim-out');if(sel){
+ const sel=document.getElementById('sim-p'),qty=document.getElementById('sim-q'),out=document.getElementById('sim-out'),qBadge=document.getElementById('sim-q-badge');
+ if(sel&&qty){
   const tier=q=>q>=100?15:q>=50?10:q>=10?5:0;
-  const up=()=>{let q=Math.max(1,Math.min(1000,parseInt(qty.value)||1));const p=Q4.P[sel.value],t=tier(q),u=Math.round(p.price*(1-t/100)),tot=u*q;
-   out.innerHTML=`<div class="sim-row"><span>Prix unitaire</span><b>${t?`<s class="muted" style="font-weight:500">${Q4.fcfa(p.price)}</s> `:''}${Q4.fcfa(u)}</b></div><div class="sim-row"><span>Remise volume</span><b>${t?'-'+t+' %':'—'}</b></div><div class="sim-row"><span>Économie totale</span><b class="gold">${Q4.fcfa((p.price-u)*q)}</b></div><div class="sim-row total"><span>Total HT · ${q} coffret${q>1?'s':''}</span><b>${Q4.fcfa(tot)}</b></div>
-   <p class="sim-next muted">${t<15?`Ajoutez <b>${(t<5?10:t<10?50:100)-q}</b> coffret(s) pour passer à -${t<5?5:t<10?10:15} %.`:'Meilleur tarif atteint.'}</p>
-   <button class="btn btn-acc btn-block" id="sim-add">Ajouter ${q} coffret${q>1?'s':''} à ma commande</button>`;
-   document.querySelectorAll('.tick').forEach(x=>x.classList.toggle('on',q>=+x.dataset.t))};
-  [sel,qty].forEach(i=>i.addEventListener('input',up));up();
+  const up=()=>{
+   let q=Math.max(1,Math.min(500,parseInt(qty.value)||1));
+   if(qBadge) qBadge.textContent=`${q} coffret${q>1?'s':''}`;
+   const p=Q4.P[sel.value],t=tier(q),u=Math.round(p.price*(1-t/100)),tot=u*q,saveAmount=(p.price-u)*q;
+   const nextQ=t<5?10:t<10?50:100;
+   const nextPct=t<5?5:t<10?10:15;
+   out.innerHTML=`
+   <div class="sim-row"><span>Prix catalogue unitaire</span><b>${Q4.fcfa(p.price)} HT</b></div>
+   <div class="sim-row"><span>Prix remisé unitaire (${t?'-'+t+' %':'Tarif base'})</span><b><span class="gold" style="font-size:1.15rem">${Q4.fcfa(u)} HT</span></b></div>
+   <div class="sim-row"><span>Économie nette réalisée</span><b class="gold" style="font-size:1.1rem">${t?Q4.fcfa(saveAmount):'0 F CFA'}</b></div>
+   <div class="sim-row"><span>Livraison sur site (${q*u>=250000?'Franco de port':'Frais standard'})</span><b>${q*u>=250000?'Offerte (Cotonou & Abidjan)':'5 000 F CFA'}</b></div>
+   <div class="sim-row total"><span>Total de votre commande HT · ${q} unité${q>1?'s':''}</span><b>${Q4.fcfa(tot)}</b></div>
+   <p class="sim-next muted">${t<15?`💡 Ajoutez encore <b>${nextQ-q}</b> coffret(s) pour débloquer le palier à <b>-${nextPct} %</b> (soit ${Q4.fcfa(Math.round(p.price*(1-nextPct/100)))} / coffret).`:'🏆 Félicitations : vous bénéficiez du tarif maximal grand volume (-15 %).'}</p>
+   <button class="btn btn-acc btn-block" id="sim-add">Ajouter ces ${q} coffrets au panier</button>
+   <a class="btn btn-wa btn-block btn-sm" style="margin-top:.5rem" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(`Bonjour Merci Pro, je souhaite réserver ${q} × ${p.name} (Total estimé : ${Q4.fcfa(tot)} HT). Pouvez-vous me préparer le devis ?`)}">Commander directement sur WhatsApp</a>
+   `;
+   document.querySelectorAll('.tick').forEach(x=>x.classList.toggle('on',q>=+x.dataset.t));
+  };
+  [sel,qty].forEach(i=>i.addEventListener('input',up));
+  up();
   document.querySelectorAll('[data-sq]').forEach(b=>b.addEventListener('click',()=>{qty.value=b.dataset.sq;up()}));
-  out.addEventListener('click',e=>{if(e.target.id==='sim-add'){Q4.addToCart(sel.value,Math.max(1,parseInt(qty.value)||1))}});}
- const f=document.getElementById('logo-file'),pv=document.getElementById('logo-pv'),nm=document.getElementById('logo-name');if(f){
-  f.addEventListener('change',()=>{const file=f.files[0];if(!file)return;if(!file.type.startsWith('image/')){Q4.toast('Choisissez une image (PNG, JPG ou SVG)');return}
-   const r=new FileReader();r.onload=()=>{pv.innerHTML=`<img src="${r.result}" alt="Aperçu de votre logo">`;pv.classList.add('has')};r.readAsDataURL(file)});
-  nm.addEventListener('input',()=>{if(!pv.classList.contains('has'))pv.textContent=nm.value||'Votre logo'});}
-}};
+  document.querySelectorAll('.tick').forEach(b=>b.addEventListener('click',()=>{qty.value=b.dataset.t;up()}));
+  out.addEventListener('click',e=>{if(e.target.id==='sim-add'){Q4.addToCart(sel.value,Math.max(1,parseInt(qty.value)||1))}});
+ }
 
+ /* Logo Studio interactive */
+ const f=document.getElementById('logo-file'),pv=document.getElementById('logo-pv'),nm=document.getElementById('logo-name');
+ if(f&&pv){
+  f.addEventListener('change',()=>{
+   const file=f.files[0];if(!file)return;
+   if(!file.type.startsWith('image/')){Q4.toast('Veuillez choisir une image au format PNG, JPG ou SVG');return}
+   const r=new FileReader();
+   r.onload=()=>{
+    pv.innerHTML=`<img src="${r.result}" alt="Aperçu logo">`;
+    pv.classList.add('has');
+    Q4.toast('Logo importé avec succès sur la maquette');
+   };
+   r.readAsDataURL(file);
+  });
+  if(nm){
+   nm.addEventListener('input',()=>{
+    if(!pv.classList.contains('has')) pv.textContent=nm.value||'Votre logo';
+   });
+  }
+  document.querySelectorAll('[data-preset]').forEach(b=>{
+   b.addEventListener('click',()=>{
+    pv.classList.remove('has');
+    pv.textContent=b.dataset.preset;
+    if(nm) nm.value=b.dataset.preset;
+    Q4.toast(`Modèle appliqué : ${b.dataset.preset}`);
+   });
+  });
+  document.querySelectorAll('[data-finish]').forEach(b=>{
+   b.addEventListener('click',()=>{
+    document.querySelectorAll('[data-finish]').forEach(c=>c.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed','true');
+    pv.className='plate '+b.dataset.finish;
+    Q4.toast(`Finition sélectionnée : ${b.textContent.trim()}`);
+   });
+  });
+ }
+
+ /* Typewriter text loop */
+ const tw=document.getElementById('tw-text');
+ if(tw){
+  const words=[
+   'se souviendront de votre merci.',
+   'renouvelleront leur confiance.',
+   'parleront de vous toute l\'année.',
+   'seront fiers de votre partenariat.'
+  ];
+  let wordIdx=0,charIdx=0,isDeleting=false;
+  function typeLoop(){
+   const current=words[wordIdx];
+   if(!isDeleting){
+    charIdx++;
+    tw.textContent=current.slice(0,charIdx);
+    if(charIdx===current.length){
+     isDeleting=true;
+     setTimeout(typeLoop,2200);
+     return;
+    }
+    setTimeout(typeLoop,65);
+   } else {
+    charIdx--;
+    tw.textContent=current.slice(0,charIdx);
+    if(charIdx===0){
+     isDeleting=false;
+     wordIdx=(wordIdx+1)%words.length;
+     setTimeout(typeLoop,350);
+     return;
+    }
+    setTimeout(typeLoop,30);
+   }
+  }
+  setTimeout(typeLoop,1200);
+ }
+
+ /* Rotating Live Order Notifications */
+ const liveBubble=document.getElementById('live-notif'),liveTxt=document.getElementById('live-notif-txt');
+ if(liveBubble&&liveTxt){
+  const orders=[
+   '<b>Cabinet Juridique (Cadjehoun, Cotonou)</b> vient de valider 45 coffrets Essentiel',
+   '<b>Banque Régionale (Ganhi, Cotonou)</b> a commandé 120 coffrets Premium',
+   '<b>Groupe Agro-Industriel (Plateau, Abidjan)</b> a réservé 80 coffrets Prestige',
+   '<b>Société BTP (Akpakpa, Cotonou)</b> a commandé 60 paniers Terroir',
+   '<b>Cabinet d\'Audit (Cocody, Abidjan)</b> a validé son Bon À Tirer (BAT) avec dorure',
+   '<b>Compagnie d\'Assurances (Haie Vive)</b> a réservé 150 coffrets Premium'
+  ];
+  let oIdx=0;
+  function showNextNotif(){
+   liveTxt.innerHTML=orders[oIdx];
+   oIdx=(oIdx+1)%orders.length;
+   liveBubble.classList.add('active');
+   setTimeout(()=>{
+    liveBubble.classList.remove('active');
+   },5500);
+  }
+  setTimeout(()=>{
+   showNextNotif();
+   setInterval(showNextNotif,14000);
+  },3000);
+ }
+}};
 </script>
 <script>
 (()=>{

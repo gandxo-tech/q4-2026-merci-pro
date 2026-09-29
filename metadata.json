@@ -1,0 +1,8 @@
+{
+  "name": "Merci Pro – Coffrets cadeaux d'entreprise personnalisés",
+  "description": "Coffrets cadeaux d'entreprise personnalisés à votre logo pour remercier clients et équipes. Remise dès 10 coffrets, livraison sur site, devis en 2 minutes.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
