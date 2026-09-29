@@ -3,14 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Merci Pro – Coffrets cadeaux d&#x27;entreprise personnalisés · Cotonou &amp; Abidjan</title>
-<meta name="description" content="Coffrets cadeaux d&#x27;entreprise personnalisés à votre logo pour remercier clients et équipes. Remise dès 10 coffrets, livraison sur site, devis en 2 minutes.">
+<title>Merci Pro – Coffrets cadeaux d'entreprise personnalisés · Cotonou &amp; Abidjan</title>
+<meta name="description" content="Coffrets cadeaux d'entreprise personnalisés à votre logo pour remercier clients et équipes. Remise dès 10 coffrets, livraison sur site, devis en 2 minutes.">
+<link rel="canonical" id="canonical-link" href="">
 <meta name="theme-color" content="#2E3A87">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Merci Pro – Coffrets cadeaux d&#x27;entreprise personnalisés · Cotonou &amp; Abidjan">
-<meta property="og:description" content="Coffrets cadeaux d&#x27;entreprise personnalisés à votre logo pour remercier clients et équipes. Remise dès 10 coffrets, livraison sur site, devis en 2 minutes.">
+<meta property="og:title" content="Merci Pro – Coffrets cadeaux d'entreprise personnalisés · Cotonou &amp; Abidjan">
+<meta property="og:description" content="Coffrets cadeaux d'entreprise personnalisés à votre logo pour remercier clients et équipes. Remise dès 10 coffrets, livraison sur site, devis en 2 minutes.">
 <meta property="og:image" content="img/hero.webp">
 <meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Merci Pro – Coffrets cadeaux d'entreprise personnalisés · Cotonou &amp; Abidjan">
+<meta name="twitter:description" content="Coffrets cadeaux d'entreprise personnalisés à votre logo pour remercier clients et équipes. Remise dès 10 coffrets, livraison sur site, devis en 2 minutes.">
+<meta name="twitter:image" content="img/hero.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232E3A87'/%3E%3Cpath d='M8 21l4-10 4 7 4-7 4 10' stroke='%23fff' stroke-width='2.6' fill='none' stroke-linejoin='round'/%3E%3Ccircle cx='25' cy='23' r='2' fill='%23C9A227'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -538,7 +543,7 @@ p{margin:0 0 1em}
    <label class="opt-label" for="sim-q" style="margin:0">Quantité de coffrets souhaitée</label>
    <span id="sim-q-badge" class="badge" style="position:static;background:var(--sec)">50 coffrets</span>
   </div>
-  <input id="sim-q" type="range" min="1" max="500" value="50" class="select" style="width:100%;accent-color:var(--sec);cursor:pointer">
+  <input id="sim-q" type="range" min="1" max="500" value="50" class="select" style="width:100%;accent-color:var(--sec);cursor:pointer" aria-label="Quantité de coffrets souhaitée" aria-valuemin="1" aria-valuemax="500" aria-valuenow="50">
   
   <div class="chips" style="margin-top:.7rem">
    <button class="chip" data-sq="10">10 ex.</button>
@@ -785,7 +790,7 @@ init(){
  if(sel&&qty){
   const tier=q=>q>=100?15:q>=50?10:q>=10?5:0;
   const up=()=>{
-   let q=Math.max(1,Math.min(500,parseInt(qty.value)||1));
+   let q=Math.max(1,Math.min(500,parseInt(qty.value)||1)); qty.setAttribute('aria-valuenow', q);
    if(qBadge) qBadge.textContent=`${q} coffret${q>1?'s':''}`;
    const p=Q4.P[sel.value],t=tier(q),u=Math.round(p.price*(1-t/100)),tot=u*q,saveAmount=(p.price-u)*q;
    const nextQ=t<5?10:t<10?50:100;
@@ -911,6 +916,10 @@ init(){
 </script>
 <script>
 (()=>{
+try {
+  const cLink = document.getElementById('canonical-link');
+  if (cLink) cLink.href = window.location.origin + window.location.pathname;
+} catch(e) {}
 const S=window.SITE, $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const fcfa=n=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'XOF',maximumFractionDigits:0}).format(Math.round(n));
 const pct=(was,now)=>Math.round((1-now/was)*100);
